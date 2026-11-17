@@ -1,0 +1,1 @@
+CREATE INDEX "idx_events_created_by" ON "events" USING btree ("created_by");
