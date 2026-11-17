@@ -18,6 +18,9 @@ export function checkDatabase(timeoutMs = 3000): Promise<DependencyStatus> {
     pool
       .query('SELECT 1')
       .then(() => finish('ok'))
-      .catch(() => finish('unavailable'));
+.catch((error: Error) => {
+  console.error('PostgreSQL health check failed:', error.message);
+  finish('unavailable');
+});
   });
 }
